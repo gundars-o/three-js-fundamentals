@@ -23,4 +23,11 @@ const cube = new THREE.Mesh( geometry, material );
 /********** ADD TO SCENE **********/
 scene.add( cube );
 /********** RENDER SCENE **********/
-renderer.render( scene, camera );
+function render( time /* the time since the page loaded to function */ ) {
+    time *= 0.001 /* convert time to seconds */;
+    cube.rotation.x /* radians */ = time;
+    cube.rotation.y = time;
+    renderer.render( scene, camera );
+    requestAnimationFrame( render );
+};
+requestAnimationFrame( render );
