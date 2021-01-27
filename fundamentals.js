@@ -17,7 +17,14 @@ const boxHeight = 1;
 const boxDepth = 1;
 const geometry = new THREE.BoxGeometry( boxWidth, boxHeight, boxDepth );
 /********** MATERIAL **********/
-const material = new THREE.MeshBasicMaterial( { color: 0x44aa88 } );
+const material = new THREE.MeshPhongMaterial( { color: 0x44aa88 } );
+/********** ADD LIGHT **********/
+const color = 0xFFFFFF;
+const intensity = 1;
+const light = new THREE.DirectionalLight( color, intensity );
+light.position.set( -1, 2, 4 );
+light.target.position.set( 0, 0, 0 );
+scene.add( light );
 /********** CREATE ELEMENT **********/
 const cube = new THREE.Mesh( geometry, material );
 /********** ADD TO SCENE **********/
