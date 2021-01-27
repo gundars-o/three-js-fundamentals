@@ -26,7 +26,19 @@ git commit -m "Sun-Earth-Moon project started."
 git push
 
 branch main
+git add .
+git commit -m "Earth added."
+git push
+
+
+branch main
 We made the earthMesh a child of the sunMesh. The sunMesh has its scale set to 5x with sunMesh.scale.set(5, 5, 5). That means the sunMeshs local space is 5 times as big. Anything put in that space will be multiplied by 5. That means the earth is now 5x larger and its distance from the sun (earthMesh.position.x = 10) is also 5x as well.
 git add .
 git commit -m "Rotation of earth enabled."
+git push
+
+branch main
+To fix the bug let's add an empty scene graph node. We'll parent both the sun and the earth to that node.
+git add .
+git commit -m "Earth size corrected."
 git push
