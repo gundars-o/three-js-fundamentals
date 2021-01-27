@@ -4,7 +4,7 @@ const canvas = document.querySelector( '#c' );
 const renderer = new THREE.WebGLRenderer( {canvas} );
 /********** CREATE CAMERA **********/
 const fov = 40;
-const aspect = 2;  // the canvas default
+const aspect = 2 /* the canvas defaul */;
 const near = 0.1;
 const far = 1000;
 const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
@@ -17,19 +17,29 @@ const scene = new THREE.Scene();
     const color = 0xFFFFFF;
     const intensity = 3;
     const light = new THREE.PointLight( color, intensity );
-    scene.add(light);
-}
-/********** CREATE OBJECTS TO RENDER **********/
+    scene.add( light );
+};
+  /**********************************************/
+ /********** CREATE OBJECTS TO RENDER **********/
+/**********************************************/
 const objects = [] /* an array of objects whose rotation to update */;
+/********** DEFINE SPHERE GEOMETRY **********/
 const radius = 1 /* use just one sphere for everything */;
 const widthSegments = 6;
 const heightSegments = 6;
 const sphereGeometry = new THREE.SphereBufferGeometry( radius, widthSegments, heightSegments );
+/********** ADD EARTH **********/
 const sunMaterial = new THREE.MeshPhongMaterial( { emissive: 0xFFFF00 } );
 const sunMesh = new THREE.Mesh( sphereGeometry, sunMaterial );
 sunMesh.scale.set( 5, 5, 5 ) /* make the sun large */;
 scene.add( sunMesh );
 objects.push( sunMesh );
+/********** ADD EARTH **********/
+const earthMaterial = new THREE.MeshPhongMaterial( { color: 0x2233FF, emissive: 0x112244 } );
+const earthMesh = new THREE.Mesh( sphereGeometry, earthMaterial );
+earthMesh.position.x = 10;
+scene.add( earthMesh );
+objects.push( earthMesh );
 /********** RENDERER SIZE **********/
 function resizeRendererToDisplaySize( renderer ) {
     const canvas = renderer.domElement;
@@ -38,7 +48,7 @@ function resizeRendererToDisplaySize( renderer ) {
     const needResize = canvas.width !== width || canvas.height !== height;
     if ( needResize ) {
         renderer.setSize( width, height, false );
-    }
+    };
     return needResize;
 };
 /********** ANIMATE AND RENDER **********/
