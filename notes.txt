@@ -59,3 +59,8 @@ branch main
 git add .
 git commit -m "AxesHelper added."
 git push
+
+branch main
+git add .
+git commit -m "GridHelper and dat.GUI added."
+git push
