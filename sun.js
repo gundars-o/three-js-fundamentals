@@ -58,6 +58,13 @@ const moonMesh = new THREE.Mesh( sphereGeometry, moonMaterial );
 moonMesh.scale.set( 0.5, 0.5, 0.5 );
 moonOrbit.add( moonMesh );
 objects.push( moonMesh );
+/********** AxesHelper to each node **********/
+objects.forEach( ( node ) => {
+    const axes = new THREE.AxesHelper();
+    axes.material.depthTest = false;
+    axes.renderOrder = 1;
+    node.add( axes );
+} );
 /********** RENDERER SIZE **********/
 function resizeRendererToDisplaySize( renderer ) {
     const canvas = renderer.domElement;

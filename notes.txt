@@ -47,3 +47,15 @@ branch main
 git add .
 git commit -m "Moon added."
 git push
+
+branch main
+    ROOT
+    + SOLAR SYSTEM
+        + SUN MESH (5x)
+        + EARTH ORBIT
+            + EARTH MESH
+            + MOON ORBIT
+                + MOON MESH
+git add .
+git commit -m "AxesHelper added."
+git push
