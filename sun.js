@@ -38,12 +38,26 @@ const sunMesh = new THREE.Mesh( sphereGeometry, sunMaterial );
 sunMesh.scale.set( 5, 5, 5 ) /* make the sun large */;
 solarSystem.add( sunMesh );
 objects.push( sunMesh );
+/********** ADD EARTH ORBIT **********/
+const earthOrbit = new THREE.Object3D();
+earthOrbit.position.x = 10;
+solarSystem.add( earthOrbit );
+objects.push( earthOrbit );
 /********** ADD EARTH **********/
 const earthMaterial = new THREE.MeshPhongMaterial( { color: 0x2233FF, emissive: 0x112244 } );
 const earthMesh = new THREE.Mesh( sphereGeometry, earthMaterial );
-earthMesh.position.x = 10;
-solarSystem.add( earthMesh );
+earthOrbit.add( earthMesh );
 objects.push( earthMesh );
+/********** ADD MOON ORBIT**********/
+const moonOrbit = new THREE.Object3D();
+moonOrbit.position.x = 2;
+earthOrbit.add( moonOrbit );
+/********** ADD MOON **********/
+const moonMaterial = new THREE.MeshPhongMaterial( { color: 0x888888, emissive: 0x222222 } );
+const moonMesh = new THREE.Mesh( sphereGeometry, moonMaterial );
+moonMesh.scale.set( 0.5, 0.5, 0.5 );
+moonOrbit.add( moonMesh );
+objects.push( moonMesh );
 /********** RENDERER SIZE **********/
 function resizeRendererToDisplaySize( renderer ) {
     const canvas = renderer.domElement;
