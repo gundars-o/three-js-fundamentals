@@ -8,7 +8,7 @@ const aspect = 2 /* the canvas defaul */;
 const near = 0.1;
 const far = 1000;
 const camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-camera.position.set( 0, 50, 0 );
+camera.position.set( 0, 150, 0 );
 camera.up.set( 0, 0, 1 );
 camera.lookAt( 0, 0, 0 );
 /********** CREATE SCENE **********/
@@ -28,7 +28,7 @@ const radius = 1 /* use just one sphere for everything */;
 const widthSegments = 6;
 const heightSegments = 6;
 const sphereGeometry = new THREE.SphereBufferGeometry( radius, widthSegments, heightSegments );
-/********** ADD EARTH **********/
+/********** ADD SUN **********/
 const sunMaterial = new THREE.MeshPhongMaterial( { emissive: 0xFFFF00 } );
 const sunMesh = new THREE.Mesh( sphereGeometry, sunMaterial );
 sunMesh.scale.set( 5, 5, 5 ) /* make the sun large */;
@@ -38,7 +38,7 @@ objects.push( sunMesh );
 const earthMaterial = new THREE.MeshPhongMaterial( { color: 0x2233FF, emissive: 0x112244 } );
 const earthMesh = new THREE.Mesh( sphereGeometry, earthMaterial );
 earthMesh.position.x = 10;
-scene.add( earthMesh );
+sunMesh.add( earthMesh ) /* enables rotation of earth */;
 objects.push( earthMesh );
 /********** RENDERER SIZE **********/
 function resizeRendererToDisplaySize( renderer ) {
